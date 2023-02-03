@@ -1,11 +1,19 @@
 import openai 
+from myOpenAi import MyOpenAI
 
-openai.api_key = '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'
+apiKey = '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'
 
-response = openai.Completion.create(
-    model='text-davinci-003', 
-    prompt='Você pode explicar o que é um transformer no contexto de NLP?',
-    max_tokens=1000
+openai.api_key = apiKey
+
+chat = MyOpenAI(
+    'Aonde fica o rio de janeiro?', 
+    'text-davinci-003', 
+    3,
+    1000,
+    1,
+    apiKey
 )
+resposta = chat.callGpt()
 
-print(response.choices[0].text)
+for x in resposta: 
+    print(x)
